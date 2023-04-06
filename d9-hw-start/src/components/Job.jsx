@@ -1,20 +1,23 @@
-import { Row, Col } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { connect } from "react-redux";
+import { addFavorite } from "../actions";
 
-const Job = ({ data }) => (
-  <Row
-    className="mx-0 mt-3 p-3"
-    style={{ border: '1px solid #00000033', borderRadius: 4 }}
-  >
-    <Col xs={3}>
-      <Link to={`/${data.company_name}`}>{data.company_name}</Link>
-    </Col>
-    <Col xs={9}>
-      <a href={data.url} target="_blank" rel="noreferrer">
-        {data.title}
-      </a>
-    </Col>
-  </Row>
-)
+const CompanyCard = ({ company, addFavorite }) => {
+  const handleAddFavorite = () => {
+    addFavorite(company);
+  };
 
-export default Job
+  return (
+    <div className="company-card">
+      <h3>{company.name}</h3>
+      <p>{company.description}</p>
+      <button onClick={handleAddFavorite}>Aggiungi ai preferiti</button>
+    </div>
+  );
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  addFavorite: (company) => dispatch(addFavorite(company)),
+});
+
+export default connect(null, mapDispatchToProps)(CompanyCard);
