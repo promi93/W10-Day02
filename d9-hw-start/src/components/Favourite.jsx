@@ -1,10 +1,12 @@
-import React from "react";
-import { connect } from "react-redux";
-import { removeFavorite } from "../actions";
+import { useSelector, useDispatch } from "react-redux";
+import { removeFavorite } from "/actions";
 
-const Favorites = ({ favorites, removeFavorite }) => {
+const Favorites = () => {
+  const favorites = useSelector((state) => state.favorites);
+  const dispatch = useDispatch();
+
   const handleRemoveFavorite = (company) => {
-    removeFavorite(company);
+    dispatch(removeFavorite(company));
   };
 
   return (
@@ -24,12 +26,4 @@ const Favorites = ({ favorites, removeFavorite }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  favorites: state.favorites,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  removeFavorite: (company) => dispatch(removeFavorite(company)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Favorites);
+export default Favorites;

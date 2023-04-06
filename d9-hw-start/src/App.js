@@ -13,7 +13,6 @@ function App() {
         <Route path="/:companyName" element={<CompanySearchResults />} />
       </Routes>
       <Route path="/:favouritesPage" element={<FavouritesPage />} />
-      <Route path="/:favouritesPage" element={<FavouritesPage />} />
     </BrowserRouter>
   );
 }

@@ -7,7 +7,7 @@ const MainSearch = () => {
   const [jobs, setJobs] = useState([]);
 
   const baseEndpoint =
-    "https://strive-benchmark.herokuapp.com/api/jobs?search=developer&limit=10";
+    "https://strive-benchmark.herokuapp.com/api/jobs?search=";
 
   const handleChange = (e) => {
     setQuery(e.target.value);

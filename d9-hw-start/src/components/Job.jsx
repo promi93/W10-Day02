@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addFavorite } from "../actions";
+import { addFavorite } from "/actions";
 
 const CompanyCard = ({ company, addFavorite }) => {
   const handleAddFavorite = () => {
